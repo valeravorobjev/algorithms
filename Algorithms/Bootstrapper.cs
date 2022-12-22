@@ -24,7 +24,7 @@ public class Bootstrapper
     /// </summary>
     public void Run()
     {
-        const int ARRAY_LENGTH = 11;
+        const int ARRAY_LENGTH = 100000;
 
         var items = new int[ARRAY_LENGTH];
         for (int i = 0; i < items.Length; i++)
