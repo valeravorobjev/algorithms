@@ -50,12 +50,22 @@ public class LinkedList<T>: ICollection<T>
 
     public void Clear()
     {
-        throw new NotImplementedException();
+        FirstNode = null;
+        LastNode = null;
+        Count = 0;
     }
 
     public bool Contains(T item)
     {
-        throw new NotImplementedException();
+        var current = FirstNode;
+        while(current != null)
+        {
+            if (current.Item!.Equals(item))
+                return true;
+            current = current.Next;
+        }
+
+        return false;
     }
 
     public void CopyTo(T[] array, int arrayIndex)

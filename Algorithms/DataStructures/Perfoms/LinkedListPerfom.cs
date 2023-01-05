@@ -18,7 +18,8 @@ public class LinkedListPerfom: IPerfom
             linkedList.Add(item);
         }
 
-        linkedList.Remove(5);
+        bool ok = linkedList.Contains(10);
+        linkedList.Clear();
 
         foreach (var item in linkedList)
         {
