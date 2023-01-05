@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using System.Collections;
+using System.Diagnostics;
+using Algorithms.DataStructures.Perfoms;
 using Algorithms.Sort;
 
 namespace Algorithms;
@@ -9,27 +11,45 @@ namespace Algorithms;
 public class Bootstrapper
 {
     private readonly List<ISortable> _sorts;
+    private readonly List<IPerfom> _perfoms;
 
     public Bootstrapper()
     {
         // Registration sort algorithms
-        _sorts = new List<ISortable>();
+        _sorts = new List<ISortable>
+        {
+            new BubbleSort(),
+            new MergeSort()
+        };
+        
+        _perfoms = new List<IPerfom>
+        {
+            new LinkedListPerfom()
+        };
+    }
 
-        _sorts.Add(new BubbleSort());
-        _sorts.Add(new MergeSort());
+    /// <summary>
+    /// Perfom data structures
+    /// </summary>
+    public void RunPerfom()
+    {
+        foreach (var prefom in _perfoms)
+        {
+            prefom.Perfom();
+        }
     }
 
     /// <summary>
     /// Run sort algorighms
     /// </summary>
-    public void Run()
+    public void SortsRun()
     {
-        const int ARRAY_LENGTH = 100000;
+        const int arrayLength = 100000;
 
-        var items = new int[ARRAY_LENGTH];
+        var items = new int[arrayLength];
         for (int i = 0; i < items.Length; i++)
         {
-            items[i] = Random.Shared.Next(0, ARRAY_LENGTH);
+            items[i] = Random.Shared.Next(0, arrayLength);
         }
 
         Debug.WriteLine($"Not sorted: {string.Join(',', items)}");

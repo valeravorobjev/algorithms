@@ -7,8 +7,8 @@ public class SortTests
     [Fact]
     public void BubbleSortTest()
     {
-        var exs = new int [11] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
-        var values = new int[11] { 11, 2, 5, 7, 1, 10, 3, 8, 4, 9, 6 };
+        var exs = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+        var values = new[] { 11, 2, 5, 7, 1, 10, 3, 8, 4, 9, 6 };
 
         BubbleSort bubbleSort = new BubbleSort();
         bubbleSort.Sort(values);
@@ -22,8 +22,8 @@ public class SortTests
     [Fact]
     public void MergeSortTest()
     {
-        var exs = new int [11] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
-        var values = new int[11] { 11, 2, 5, 7, 1, 10, 3, 8, 4, 9, 6 };
+        var exs = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+        var values = new[] { 11, 2, 5, 7, 1, 10, 3, 8, 4, 9, 6 };
 
         MergeSort mergeSort = new MergeSort();
         mergeSort.Sort(values);
