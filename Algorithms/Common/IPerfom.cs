@@ -1,4 +1,4 @@
-namespace Algorithms.DataStructures.Perfoms;
+namespace Algorithms.Common;
 
 /// <summary>
 /// Perfom interface. For testing data structures.
@@ -8,5 +8,7 @@ public interface IPerfom
     /// <summary>
     /// Perfom data structure
     /// </summary>
-    void Perfom();
+    void Start();
+    
+    string Name { get; }
 }

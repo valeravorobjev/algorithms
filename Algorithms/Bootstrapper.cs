@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Diagnostics;
-using Algorithms.DataStructures.Perfoms;
+﻿using System.Diagnostics;
+using Algorithms.Common;
+using Algorithms.DataStructures;
 using Algorithms.Sort;
 
 namespace Algorithms;
@@ -10,65 +10,33 @@ namespace Algorithms;
 /// </summary>
 public class Bootstrapper
 {
-    private readonly List<ISortable> _sorts;
     private readonly List<IPerfom> _perfoms;
 
     public Bootstrapper()
     {
-        // Registration sort algorithms
-        _sorts = new List<ISortable>
-        {
-            new BubbleSort(),
-            new MergeSort()
-        };
-        
         _perfoms = new List<IPerfom>
         {
-            new LinkedListPerfom()
+            new SortPerfom(),
+            new DataStructurePerfom()
         };
     }
-
-    /// <summary>
-    /// Perfom data structures
-    /// </summary>
-    public void RunPerfom()
-    {
-        foreach (var prefom in _perfoms)
-        {
-            prefom.Perfom();
-        }
-    }
-
+    
     /// <summary>
     /// Run sort algorighms
     /// </summary>
-    public void SortsRun()
+    public void Run()
     {
-        const int arrayLength = 100000;
-
-        var items = new int[arrayLength];
-        for (int i = 0; i < items.Length; i++)
+        Stopwatch stopwatch = new Stopwatch();
+        foreach (var perfom in _perfoms)
         {
-            items[i] = Random.Shared.Next(0, arrayLength);
-        }
-
-        Debug.WriteLine($"Not sorted: {string.Join(',', items)}");
-
-        foreach (var sort in _sorts)
-        {
-            var array = new int[items.Length];
-            items.CopyTo(array, 0);
-
-            Stopwatch stopwatch = new Stopwatch();
-            Console.WriteLine($"Start [{sort.Name}]");
+            stopwatch.Reset();
+            
+            Debug.WriteLine("");
+            Debug.WriteLine($"Group: [{perfom.Name}] [Start]");
             stopwatch.Start();
-
-            sort.Sort(array);
-
+            perfom.Start();
             stopwatch.Stop();
-            Debug.WriteLine($"Sorted [{sort.Name}]: {string.Join(',', array)}");
-            Console.WriteLine($"Elasped [{sort.Name}]: {stopwatch.Elapsed}");
-            Console.WriteLine();
+            Debug.WriteLine($"Group: [{perfom.Name}] [Elasped: {stopwatch.Elapsed}]");
         }
     }
 }

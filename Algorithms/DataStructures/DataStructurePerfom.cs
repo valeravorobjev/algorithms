@@ -1,16 +1,17 @@
 using System.Diagnostics;
+using Algorithms.Common;
 
-namespace Algorithms.DataStructures.Perfoms;
+namespace Algorithms.DataStructures;
 
 /// <summary>
 /// Implementation IPerfom for testing data structure LinkedList
 /// </summary>
-public class LinkedListPerfom: IPerfom
+public class DataStructurePerfom: IPerfom
 {
     /// <summary>
     /// Perfom data structure
     /// </summary>
-    public void Perfom()
+    public void Start()
     {
         LinkedList<int> linkedList = new LinkedList<int>();
         foreach (var item in Enumerable.Range(0, 10))
@@ -26,4 +27,6 @@ public class LinkedListPerfom: IPerfom
             Debug.WriteLine(item);
         }
     }
+
+    public string Name => "DataStructure";
 }
